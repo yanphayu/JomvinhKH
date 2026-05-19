@@ -1,2 +1,2 @@
-# Tosder
-This project we are going to talk about place in cambodia.
+# We are going to show about places in cambodia.
+Vue 3 + Vite + TailWind
