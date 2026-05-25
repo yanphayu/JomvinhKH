@@ -1,5 +1,7 @@
 <template>
-  <HomeView/>
+  <div class="w-full">
+    <HomeView/>
+  </div>
 </template>
 
 <script setup>

@@ -5,7 +5,7 @@
         <img
           src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
           alt="Our team in the field"
-          class="h-[28rem] w-full object-cover md:h-[34rem]"
+          class="h-112 w-full object-cover md:h-136"
           loading="lazy"
         />
       </div>
