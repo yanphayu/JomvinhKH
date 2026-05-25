@@ -1,0 +1,104 @@
+<template>
+  <header
+    :class="[
+      'fixed top-0 left-0 w-full z-50 px-10 py-6 flex items-center justify-between transition-all duration-300',
+      scrolled ? 'bg-white border-b border-gray-100' : 'bg-transparent'
+    ]"
+  >
+    <div
+      :class="[
+        'text-xl font-bold tracking-widest transition-colors duration-300',
+        scrolled ? 'text-neutral-900' : 'text-white'
+      ]"
+    >
+      JOMVINHKH
+    </div>
+
+    <nav class="hidden space-x-8 md:flex">
+      <a href="#about" :class="['text-sm font-medium transition-colors duration-300', scrolled ? 'text-neutral-600 hover:text-black' : 'text-white/70 hover:text-white']">About</a>
+      <a href="#history" :class="['text-sm font-medium transition-colors duration-300', scrolled ? 'text-neutral-600 hover:text-black' : 'text-white/70 hover:text-white']">Our History</a>
+      <a href="#action" :class="['text-sm font-medium transition-colors duration-300', scrolled ? 'text-neutral-600 hover:text-black' : 'text-white/70 hover:text-white']">Take Action</a>
+    </nav>
+
+    <button
+      :class="[
+        'hidden md:block px-5 py-2.5 text-sm font-medium transition-all duration-300',
+        scrolled
+          ? 'bg-neutral-900 text-white hover:bg-neutral-800'
+          : 'bg-white text-neutral-900 hover:bg-neutral-100'
+      ]"
+    >
+      Contact Us
+    </button>
+
+    <button @click="menuOpen = !menuOpen" class="md:hidden relative z-50 size-6 flex flex-col items-center justify-center gap-1.5">
+      <span
+        :class="[
+          'block h-0.5 w-5 rounded transition-all duration-300',
+          scrolled ? 'bg-neutral-900' : 'bg-white',
+          menuOpen ? 'translate-y-2 rotate-45' : ''
+        ]"
+      />
+      <span
+        :class="[
+          'block h-0.5 w-5 rounded transition-all duration-300',
+          scrolled ? 'bg-neutral-900' : 'bg-white',
+          menuOpen ? 'opacity-0' : ''
+        ]"
+      />
+      <span
+        :class="[
+          'block h-0.5 w-5 rounded transition-all duration-300',
+          scrolled ? 'bg-neutral-900' : 'bg-white',
+          menuOpen ? '-translate-y-2 -rotate-45' : ''
+        ]"
+      />
+    </button>
+  </header>
+
+  <div
+    v-show="menuOpen"
+    class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 md:hidden"
+    :class="scrolled ? 'bg-white' : 'bg-neutral-900'"
+  >
+    <a href="#about" @click="menuOpen = false" :class="['text-2xl font-medium transition-colors', scrolled ? 'text-neutral-900 hover:text-neutral-600' : 'text-white hover:text-white/70']">About</a>
+    <a href="#history" @click="menuOpen = false" :class="['text-2xl font-medium transition-colors', scrolled ? 'text-neutral-900 hover:text-neutral-600' : 'text-white hover:text-white/70']">Our History</a>
+    <a href="#action" @click="menuOpen = false" :class="['text-2xl font-medium transition-colors', scrolled ? 'text-neutral-900 hover:text-neutral-600' : 'text-white hover:text-white/70']">Take Action</a>
+    <button
+      :class="[
+        'mt-4 px-6 py-3 text-base font-medium transition-all duration-300',
+        scrolled
+          ? 'bg-neutral-900 text-white hover:bg-neutral-800'
+          : 'bg-white text-neutral-900 hover:bg-neutral-100'
+      ]"
+    >
+      Contact Us
+    </button>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const scrolled = ref(false)
+const menuOpen = ref(false)
+
+function handleScroll() {
+  scrolled.value = window.scrollY > 0
+}
+
+function handleResize() {
+  if (window.innerWidth >= 768) menuOpen.value = false
+}
+
+onMounted(() => {
+  handleScroll()
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('resize', handleResize)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', handleResize)
+})
+</script>
