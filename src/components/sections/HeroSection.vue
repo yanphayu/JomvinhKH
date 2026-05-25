@@ -154,7 +154,7 @@ onMounted(() => {
   content: '';
   position: absolute;
   inset: 0;
-  background: white;
+  background: #d4a853;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -162,7 +162,7 @@ onMounted(() => {
 }
 .btn:hover::before { transform: scaleX(1); }
 .btn:hover {
-  border-color: white;
+  border-color: #d4a853;
   color: #080808;
 }
 
