@@ -28,7 +28,7 @@
           JOMVINH KH
         </span>
       </h1>
-      <p>We show you all the amazing places to visit in CAMBODIA.</p>
+      <p style="color: #fcb045b1">We show you all the amazing places to visit in CAMBODIA.</p>
     </div>
 
     <button class="btn">View All</button>
@@ -58,7 +58,7 @@ onMounted(() => {
   overflow: hidden;
   background: #080808;
   font-family: 'DM Sans', sans-serif;
-  color: #f5f0e8;
+  color: #080808;
 }
 
 
@@ -114,6 +114,7 @@ onMounted(() => {
 .hero-headline {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(4.5rem, 12vw, 11rem);
+  color: #fcb045b1;
   line-height: 0.9;
   letter-spacing: 0.02em;
   margin: 0 0 2.5rem;
@@ -139,8 +140,8 @@ onMounted(() => {
   gap: 0.75rem;
   padding: 0.85rem 2rem;
   background: transparent;
-  border: 1px solid rgba(245, 240, 232, 0.3);
-  color: #f5f0e8;
+  border: 1px solid rgba(255, 255, 255, 0.553);
+  color: white;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.75rem;
   font-weight: 300;
@@ -154,7 +155,7 @@ onMounted(() => {
   content: '';
   position: absolute;
   inset: 0;
-  background: #d4a853;
+  background: #fcb045;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -162,8 +163,8 @@ onMounted(() => {
 }
 .btn:hover::before { transform: scaleX(1); }
 .btn:hover {
-  border-color: #d4a853;
-  color: #080808;
+  border-color: #fcb045;
+  color: black;
 }
 
 @media (max-width: 768px) {
