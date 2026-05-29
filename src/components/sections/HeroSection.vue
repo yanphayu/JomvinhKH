@@ -1,42 +1,41 @@
 <template>
   <section class="hero-section">
-       <div class="video-wrapper">
-      <video
-        ref="videoRef"
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-  
-      >
+    <div class="video-wrapper">
+      <video ref="videoRef" class="hero-video" autoplay muted loop playsinline>
         <source src="/video.mp4" type="video/mp4" />
       </video>
-
-    
       <div class="overlay" />
       <div class="grain" />
     </div>
 
     <div class="hero-content">
-    
       <h1 class="hero-headline">
-        <span class="headline-line" :class="{ visible: mounted }" style="transition-delay: 0.15s">
+        <span class="headline-line welcome-line" :class="{ visible: mounted }" style="transition-delay: 0.2s">
           Welcome to
         </span>
-        <span class="headline-line" :class="{ visible: mounted }" style="transition-delay: 0.45s">
-          JOMVINH KH
-        </span>
+        <div class="typewriter-container">
+          <span class="headline-row">
+            <span class="bold-line">JOMVINH</span>
+            <span class="stroke-line">KH</span>
+          </span>
+        </div>
       </h1>
-      <p style="color: #fcb045b1">We show you all the amazing places to visit in CAMBODIA.</p>
+
+      <div class="hero-divider" :class="{ visible: mounted }" style="transition-delay: 0.75s"></div>
+
+      <p class="hero-sub" :class="{ visible: mounted }" style="transition-delay: 0.82s">
+        We show you all the amazing places to visit in Cambodia.
+      </p>
     </div>
 
-    <button class="btn">View All</button>
+    <button class="btn" :class="{ visible: mounted }" style="transition-delay: 1s">
+      <span>View All</span>
+    </button>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const videoRef = ref(null)
 const mounted = ref(false)
@@ -47,8 +46,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .hero-section {
   position: relative;
@@ -57,10 +55,9 @@ onMounted(() => {
   min-height: 600px;
   overflow: hidden;
   background: #080808;
-  font-family: 'DM Sans', sans-serif;
-  color: #080808;
+  font-family: 'Bebas Neue', sans-serif; /* Global section font */
+  color: #f5f0e8;
 }
-
 
 .video-wrapper {
   position: absolute;
@@ -99,7 +96,6 @@ onMounted(() => {
   100% { transform: translate(1%, 1%); }
 }
 
-
 .hero-content {
   position: absolute;
   inset: 0;
@@ -113,23 +109,110 @@ onMounted(() => {
 
 .hero-headline {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4.5rem, 12vw, 11rem);
-  color: #fcb045b1;
+  font-size: clamp(60px, 12vw, 200px);
   line-height: 0.9;
   letter-spacing: 0.02em;
-  margin: 0 0 2.5rem;
+  margin: 0 0 1.5rem;
   display: flex;
   flex-direction: column;
 }
+
 .headline-line {
   display: block;
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(36px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.headline-line.visible { opacity: 1; transform: translateY(0); }
+.headline-line.visible {
+  opacity: 1;
+  transform: none;
+}
 
+/* Updated "Welcome to" font specs */
+.welcome-line {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  color: rgba(245, 240, 232, 0.75);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
 
+.typewriter-container {
+  display: inline-block;
+  overflow: hidden; 
+  white-space: nowrap; 
+  border-right: 4px solid #d4a853; 
+  width: 0;
+  max-width: max-content;
+  animation: 
+    typing 5s steps(11, end) infinite,
+    blink 0.75s step-end infinite;
+}
+
+.headline-row {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.18em;
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  40% { width: 100%; }   
+  60% { width: 100%; }  
+  90% { width: 0; }     
+  100% { width: 0; }
+}
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: #d4a853; }
+}
+
+.bold-line {
+  color: #f5f0e8;
+}
+
+.stroke-line {
+  color: transparent;
+  -webkit-text-stroke: 2px #d4a853;
+}
+
+.hero-divider {
+  width: 48px;
+  height: 1px;
+  background: #d4a853;
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hero-divider.visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Updated subtext font alignment */
+.hero-sub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: rgba(245, 240, 232, 0.6);
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hero-sub.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Updated button typography definitions */
 .btn {
   position: absolute;
   bottom: 3rem;
@@ -138,33 +221,44 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.85rem 2rem;
+  padding: 0.85rem 2.2rem;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.553);
-  color: white;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 300;
-  letter-spacing: 0.15em;
+  border: 1px solid rgba(245, 240, 232, 0.3);
+  color: #f5f0e8;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
   overflow: hidden;
-  transition: border-color 0.25s, color 0.25s;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease,
+              border-color 0.25s, color 0.25s;
+}
+.btn.visible {
+  opacity: 1;
+  transform: none;
+}
+.btn span {
+  position: relative;
+  z-index: 1;
 }
 .btn::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: #fcb045;
+  background: #d4a853;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
-  z-index: -1;
+  z-index: 0;
 }
 .btn:hover::before { transform: scaleX(1); }
 .btn:hover {
-  border-color: #fcb045;
-  color: black;
+  border-color: #d4a853;
+  color: #080808;
 }
 
 @media (max-width: 768px) {
