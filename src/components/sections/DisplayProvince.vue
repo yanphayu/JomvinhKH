@@ -5,7 +5,7 @@
       <div class="section-inner layout-left">
         <div class="image-block" :class="{ popped: s1Visible }">
           <div class="img-frame">
-            <img src="https://us.images.westend61.de/0000687554pw/cambodia-siem-reap-angkor-wat-temple-EHF000267.jpg"
+            <img src="https://plus.unsplash.com/premium_photo-1661963850090-cf5b2f556b4d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8"
               alt="Angkor Wat aerial" />
             <div class="img-caption">
               <span>Siem Reap, Cambodia</span>
