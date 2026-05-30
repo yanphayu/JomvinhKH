@@ -10,9 +10,9 @@
     </div>
 
     <nav class="hidden space-x-8 md:flex">
-      <a href="#about" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300">About</a>
-      <a href="#history" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300">Our History</a>
-      <a href="#action" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300">Take Action</a>
+      <router-link to="/" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300">Home</router-link>
+      <router-link to="/view" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300">Views</router-link>
+      <router-link to="/contact" class="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300">Contact</router-link>
     </nav>
 
     <button class="hidden md:block px-5 py-2.5 text-sm font-medium bg-white text-neutral-900 hover:bg-neutral-200 transition-all duration-300">
@@ -30,9 +30,9 @@
     v-show="menuOpen"
     class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-neutral-900 md:hidden"
   >
-    <a href="#about" @click="menuOpen = false" class="text-2xl font-medium text-white hover:text-white/70 transition-colors">About</a>
-    <a href="#history" @click="menuOpen = false" class="text-2xl font-medium text-white hover:text-white/70 transition-colors">Our History</a>
-    <a href="#action" @click="menuOpen = false" class="text-2xl font-medium text-white hover:text-white/70 transition-colors">Take Action</a>
+    <router-link to="/" @click="menuOpen = false" class="text-2xl font-medium text-white hover:text-white/70 transition-colors">Home</router-link>
+    <router-link to="/view" @click="menuOpen = false" class="text-2xl font-medium text-white hover:text-white/70 transition-colors">Views</router-link>
+    <router-link to="/contact" @click="menuOpen = false" class="text-2xl font-medium text-white hover:text-white/70 transition-colors">Contact</router-link>
     <button class="mt-4 px-6 py-3 text-base font-medium bg-white text-neutral-900 hover:bg-neutral-200 transition-all duration-300">
       Contact Us
     </button>

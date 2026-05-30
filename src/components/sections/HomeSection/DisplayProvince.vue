@@ -5,7 +5,7 @@
       <div class="section-inner layout-left">
         <div class="image-block" :class="{ popped: s1Visible }">
           <div class="img-frame">
-            <img src="https://plus.unsplash.com/premium_photo-1661963850090-cf5b2f556b4d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8"
+            <img :src="imagesr"
               alt="Angkor Wat aerial" />
             <div class="img-caption">
               <span>Siem Reap, Cambodia</span>
@@ -97,6 +97,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import provinces from '../../../storages/provinces'
 
 const section1 = ref(null)
 const section2 = ref(null)
@@ -104,7 +105,8 @@ const section3 = ref(null)
 const s1Visible = ref(false)
 const s2Visible = ref(false)
 const s3Visible = ref(false)
-
+const province = ref(provinces)
+const imagesr = ref(province.value[1].image)
 let observer
 
 onMounted(() => {

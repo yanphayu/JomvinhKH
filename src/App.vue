@@ -1,9 +1,10 @@
 <template>
   <div class="w-full">
-    <HomeView/>
+    <TheHeader/>
+    <router-view/>
   </div>
 </template>
 
 <script setup>
-import HomeView from './layouts/HomeView.vue';
+import TheHeader from './components/layout/TheHeader.vue';
 </script>
